@@ -7,19 +7,17 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log('I be working, my liege!');
-  client.user.setActivity('Try >MDN help');
+  client.user.setActivity('Try >MDN [search-query]');
 });
 
 client.on('message', message => {
   const parseCommand = message.content.match(/^>MDN (.*)/);
-  if (!parseCommand) {
-    return;
-  }
-  const query = parseCommand[1];
-  fireCommand(query)
-    .then(response => {
+  if (parseCommand) {
+    const query = parseCommand[1];
+    fireCommand(query).then(response => {
       message.channel.send(response);
     });
+  }
 });
 
 client.login(TOKEN);

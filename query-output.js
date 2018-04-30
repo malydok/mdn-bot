@@ -1,7 +1,4 @@
-const queryOutput = json => {
-  const out = [`Found **${json.count} matches**.`];
-  out.push(json.documents[0].url);
-  return out.join('\n');
-};
+const queryOutput = json =>
+  `Found **${json.count} matches**.\n${json.documents[0].url}`;
 
 module.exports = queryOutput;
